@@ -29,18 +29,18 @@ Metamask 是 Chrome 和 Firefox 的浏览器扩展， 它能让用户安全地�
 
 Metamask 把它的 web3 提供者注入到浏览器的全局 JavaScript对象web3中。所以你的应用可以检查 web3 是否存在。若存在就使用 web3.currentProvider 作为它的提供者。
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function() {<br>
 
-  // 检查web3是否已经注入到(Mist/MetaMask)
+  // 检查web3是否已经注入到(Mist/MetaMask)<br>
   
-  if (typeof web3 !== 'undefined') {
-    // 使用 Mist/MetaMask 的提供者
-    web3js = new Web3(web3.currentProvider);
-  } else {
+  if (typeof web3 !== 'undefined') {<br>
+    // 使用 Mist/MetaMask 的提供者<br>
+    web3js = new Web3(web3.currentProvider);<br>
+  } else {<br>
     // 处理用户没安装的情况， 比如显示一个消息
-    // 告诉他们要安装 MetaMask 来使用我们的应用
-  }
-  // 现在你可以启动你的应用并自由访问 Web3.js:
+    // 告诉他们要安装 MetaMask 来使用我们的应用<br>
+  }<br>
+  // 现在你可以启动你的应用并自由访问 Web3.js:<br>
   startApp()
 })
 
