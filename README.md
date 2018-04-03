@@ -2,8 +2,8 @@
 ==
 
   //用npm<br>
-  npm install web3
-  //用yarn
+  npm install web3<br>
+  //用yarn<br>
   yarn add web3
   //用bower
   bower install web3
