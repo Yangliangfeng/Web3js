@@ -1,4 +1,4 @@
-1. 添加Web3.js
+1.添加Web3.js
 ---------------
 
   //用npm<br>
@@ -12,21 +12,21 @@
   
   甚至，你可以从 github 直接下载压缩后的 .js 文件 然后包含到你的项目文件中：<script language="javascript" type="text/javascript" src="web3.min.js"></script>
 
-2. Web3 Provider
+2.Web3 Provider
 --------------------
 要记住，以太坊是由共享同一份数据的相同拷贝的 节点 构成的。 在 Web3.js 里设置 Web3 的 Provider 告诉我们的代码应该和 哪个节点 交互来处理我们的读写。这就好像在传统的 Web 应用程序中为你的 API 调用设置远程 Web 服务器的网址。
 
-   Infura
+Infura
 --------
 Infura 是一个服务，它维护了很多以太坊节点并提供了一个缓存层来实现高速读取。你可以用他们的 API 来免费访问这个服务。 用 Infura 作为节点提供者，你可以不用自己运营节点就能很可靠地向以太坊发送、接收信息。
 
 var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
 
-   Metamask
+ Metamask
 -------
 Metamask 是 Chrome 和 Firefox 的浏览器扩展， 它能让用户安全地维护他们的以太坊账户和私钥， 并用他们的账户和网站互动来使用 Web3.js。
 
-3. 使用 Metamask 的 web3 提供者
+3.使用 Metamask 的 web3 提供者
 -------------------------
 Metamask 把它的 web3 提供者注入到浏览器的全局 JavaScript对象web3中。所以你的应用可以检查 web3 是否存在。若存在就使用 web3.currentProvider 作为它的提供者。
 
@@ -53,11 +53,14 @@ var myContract = new web3js.eth.Contract(myABI, myContractAddress);
 ------------
 ABI 意为应用二进制接口（Application Binary Interface）。 基本上，它是以 JSON 格式表示合约的方法，告诉 Web3.js 如何以合同理解的方式格式化函数调用。
 
-4. 调用和合约函数
+4.调用和合约函数
 -----------------
 
   Call
 -----------
+  call 用来调用 view 和 pure 函数。它只运行在本地节点，不会在区块链上创建事务。
+  myContract.methods.myMethod(123).call()
+
 
 
 
