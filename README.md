@@ -32,6 +32,7 @@ Metamask 把它的 web3 提供者注入到浏览器的全局 JavaScript对象web
 window.addEventListener('load', function() {
 
   // 检查web3是否已经注入到(Mist/MetaMask)
+  
   if (typeof web3 !== 'undefined') {
   
     // 使用 Mist/MetaMask 的提供者
