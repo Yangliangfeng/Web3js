@@ -31,27 +31,32 @@ Metamask 把它的 web3 提供者注入到浏览器的全局 JavaScript对象web
 
 window.addEventListener('load', function() {<br>
 
-  // 检查web3是否已经注入到(Mist/MetaMask)<br>
+      // 检查web3是否已经注入到(Mist/MetaMask)<br>
   
   if (typeof web3 !== 'undefined') {<br>
-    // 使用 Mist/MetaMask 的提供者<br>
+      // 使用 Mist/MetaMask 的提供者<br>
     web3js = new Web3(web3.currentProvider);<br>
   } else {<br>
-    // 处理用户没安装的情况， 比如显示一个消息
-    // 告诉他们要安装 MetaMask 来使用我们的应用<br>
+      // 处理用户没安装的情况， 比如显示一个消息
+      // 告诉他们要安装 MetaMask 来使用我们的应用<br>
   }<br>
-  // 现在你可以启动你的应用并自由访问 Web3.js:<br>
+    // 现在你可以启动你的应用并自由访问 Web3.js:<br>
   startApp()
 })
 
 #实例化 Web3.js
+
 var myContract = new web3js.eth.Contract(myABI, myContractAddress);
 
 ##合约 ABI
-
+------------
 ABI 意为应用二进制接口（Application Binary Interface）。 基本上，它是以 JSON 格式表示合约的方法，告诉 Web3.js 如何以合同理解的方式格式化函数调用。
 
-##合约地址
+#调用和合约函数
+
+##Call
+-----------
+
 
 
 
