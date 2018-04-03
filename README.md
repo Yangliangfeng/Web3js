@@ -69,39 +69,58 @@ ABI 意为应用二进制接口（Application Binary Interface）。 基本上�
 5.获得 MetaMask中的用户账户
 ---------------
   MetaMask 允许用户在扩展中管理多个账户
-  我们可以通过这样来获取 web3 变量中激活的当前账户：
+  我们可以通过这样来获取 web3 变量中激活的当前账户：<br>
   var userAccount = web3.eth.accounts[0]
   
   因为用户可以随时在 MetaMask 中切换账户，我们的应用需要监控这个变量
-  我们可以通过 setInterval 方法来做:
+  我们可以通过 setInterval 方法来做:<br>
   
   var accountInterval = setInterval(function() {
+  
   // 检查账户是否切换
+  
   if (web3.eth.accounts[0] !== userAccount) {
+  
     userAccount = web3.eth.accounts[0];
+    
     // 调用一些方法来更新界面
+    
     updateInterface();
+    
   }
+  
   }, 100);
   
 6.发送事务
 ---------
   function createRandomZombie(name) {
+  
   // 这将需要一段时间，所以在界面中告诉用户这一点
   // 事务被发送出去了
+  
   $("#txStatus").text("正在区块链上创建僵尸，这将需要一会儿...");
+  
   // 把事务发送到我们的合约:
+  
   return CryptoZombies.methods.createRandomZombie(name)
+  
   .send({ from: userAccount })
+  
   .on("receipt", function(receipt) {
+  
     $("#txStatus").text("成功生成了 " + name + "!");
     // 事务被区块链接受了，重新渲染界面
+    
     getZombiesByOwner(userAccount).then(displayZombies);
   })
+  
   .on("error", function(error) {
+  
     // 告诉用户合约失败了
     $("#txStatus").text(error);
+    
   });
+  
  }
  我们的函数 send 一个事务到我们的 Web3 提供者，然后链式添加一些事件监听:
   receipt 将在合约被包含进以太坊区块上以后被触发，这意味着僵尸被创建并保存进我们的合约了。
