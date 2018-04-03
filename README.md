@@ -116,7 +116,8 @@ ABI 意为应用二进制接口（Application Binary Interface）。 基本上�
   一个 wei 是以太的最小单位 — 1 ether 等于 10^18 wei
   
   // 把 1 ETH 转换成 Wei
-  web3js.utils.toWei("1", "ether");
+  
+    web3js.utils.toWei("1", "ether");
 ```
   CryptoZombies.methods.levelUp(zombieId)
 .send({ from: userAccount, value: web3js.utils.toWei("0.001","ether") })
@@ -155,9 +156,8 @@ Web3.js 事件 和 MetaMask
   
   所以现在我们必须使用一个单独 Web3 提供者，它针对事件提供了WebSockets支持。 我们可以用 Infura 来像实例化第二份拷贝：
   
-  var web3Infura = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
-  
-  var czEvents = new web3Infura.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+    var web3Infura = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+    var czEvents = new web3Infura.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
   
 
   
