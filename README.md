@@ -33,9 +33,11 @@ window.addEventListener('load', function() {
 
   // 检查web3是否已经注入到(Mist/MetaMask)
   if (typeof web3 !== 'undefined') {
+  
     // 使用 Mist/MetaMask 的提供者
     web3js = new Web3(web3.currentProvider);
   } else {
+  
     // 处理用户没安装的情况， 比如显示一个消息
     // 告诉他们要安装 MetaMask 来使用我们的应用
   }
