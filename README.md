@@ -45,6 +45,7 @@ window.addEventListener('load', function() {<br>
 })
 
 #实例化 Web3.js
+var myContract = new web3js.eth.Contract(myABI, myContractAddress);
 
 ##合约 ABI
 
@@ -52,7 +53,7 @@ ABI 意为应用二进制接口（Application Binary Interface）。 基本上�
 
 ##合约地址
 
-var myContract = new web3js.eth.Contract(myABI, myContractAddress);
+
 
 
 
