@@ -3,10 +3,13 @@
 
   //用npm<br>
   npm install web3<br>
+  
   //用yarn<br>
   yarn add web3
+  
   //用bower<br>
   bower install web3<br>
+  
   甚至，你可以从 github 直接下载压缩后的 .js 文件 然后包含到你的项目文件中：<script language="javascript" type="text/javascript" src="web3.min.js"></script>
 
 #Web3 Provider
