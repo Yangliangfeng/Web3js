@@ -60,6 +60,12 @@ ABI 意为应用二进制接口（Application Binary Interface）。 基本上�
 -----------
   call 用来调用 view 和 pure 函数。它只运行在本地节点，不会在区块链上创建事务。
   myContract.methods.myMethod(123).call()
+  
+  Send
+  --------------
+  send 将创建一个事务并改变区块链上的数据。你需要用 send 来调用任何非 view 或者 pure 的函数
+  myContract.methods.myMethod(123).send()
+  
 
 
 
