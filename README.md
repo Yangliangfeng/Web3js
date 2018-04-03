@@ -122,9 +122,80 @@ ABI 意为应用二进制接口（Application Binary Interface）。 基本上�
   });
   
  }
+ 
  我们的函数 send 一个事务到我们的 Web3 提供者，然后链式添加一些事件监听:
+ 
   receipt 将在合约被包含进以太坊区块上以后被触发，这意味着僵尸被创建并保存进我们的合约了。
+  
   error 将在事务未被成功包含进区块后触发，比如用户未支付足够的 gas。我们需要在界面中通知用户事务失败以便他们可以再次尝试。
+  
+  注意:你可以在调用 send 时选择指定 gas 和 gasPrice， 例如： .send({ from: userAccount, gas: 3000000 })。
+  
+  如果你不指定，MetaMask 将让用户自己选择数值。
+  
+7.调用 Payable 函数
+--------------------
+  一个 wei 是以太的最小单位 — 1 ether 等于 10^18 wei
+  
+  // 把 1 ETH 转换成 Wei
+  
+  web3js.utils.toWei("1", "ether");
+  
+  CryptoZombies.methods.levelUp(zombieId)
+  
+.send({ from: userAccount, value: web3js.utils.toWei("0.001","ether") })
+
+8.订阅事件
+-----------------------
+  合约里面的:<br>event NewZombie(uint zombieId, string name, uint dna);
+  
+  在 Web3.js里， 你可以 订阅 一个事件，这样你的 Web3 提供者可以在每次事件发生后触发你的一些代码逻辑：
+  
+  cryptoZombies.events.NewZombie()
+  
+.on("data", function(event) {
+
+  let zombie = event.returnValues;
+  
+  console.log("一个新僵尸诞生了！", zombie.zombieId, zombie.name, zombie.dna);
+  
+}).on('error', console.error);
+
+  使用 indexed
+  ----------
+  为了筛选仅和当前用户相关的事件，我们的 Solidity 合约将必须使用 indexed 关键字
+  
+  event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
+
+  这就意味着我们可以在前端事件监听中过滤事件
+  
+  cryptoZombies.events.Transfer({ filter: { _to: userAccount } })
+  
+.on("data", function(event) {
+
+  let data = event.returnValues;
+  
+  // 当前用户更新了一个僵尸！更新界面来显示
+  
+}).on('error', console.error);
+
+Web3.js 事件 和 MetaMask
+------------------------
+  上面的示例代码是针对 Web3.js 最新版1.0的，此版本使用了 WebSockets 来订阅事件。
+  
+  但是，MetaMask 尚且不支持最新的事件 API 
+  
+  所以现在我们必须使用一个单独 Web3 提供者，它针对事件提供了WebSockets支持。 我们可以用 Infura 来像实例化第二份拷贝：
+  
+  var web3Infura = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+  
+  var czEvents = new web3Infura.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+  
+
+  
+
+
+  
 
 
 
