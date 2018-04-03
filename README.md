@@ -48,13 +48,14 @@ window.addEventListener('load', function() {<br>
 
 var myContract = new web3js.eth.Contract(myABI, myContractAddress);
 
-##合约 ABI
+合约 ABI
 ------------
 ABI 意为应用二进制接口（Application Binary Interface）。 基本上，它是以 JSON 格式表示合约的方法，告诉 Web3.js 如何以合同理解的方式格式化函数调用。
 
 #调用和合约函数
 
-##Call
+Call
+-----------
 -----------
 
 
