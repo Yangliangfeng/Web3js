@@ -17,7 +17,7 @@ Infura
 --------
 Infura 是一个服务，它维护了很多以太坊节点并提供了一个缓存层来实现高速读取。你可以用他们的 API 来免费访问这个服务。 用 Infura 作为节点提供者，你可以不用自己运营节点就能很可靠地向以太坊发送、接收信息。
 
-var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+    var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
 
  Metamask
 -------
@@ -43,7 +43,7 @@ window.addEventListener('load', function() {
 
 3.实例化 Web3.js
 -----------------
-var myContract = new web3js.eth.Contract(myABI, myContractAddress);
+    var myContract = new web3js.eth.Contract(myABI, myContractAddress);
 
   合约 ABI
 ------------
@@ -54,19 +54,23 @@ ABI 意为应用二进制接口（Application Binary Interface）。 基本上�
   Call
 -----------
   call 用来调用 view 和 pure 函数。它只运行在本地节点，不会在区块链上创建事务。
+ `
   myContract.methods.myMethod(123).call()
+  `
   
   Send
   --------------
   send 将创建一个事务并改变区块链上的数据。你需要用 send 来调用任何非 view 或者 pure 的函数
-  myContract.methods.myMethod(123).send()
+`
+myContract.methods.myMethod(123).send()
+`
   
 5.获得 MetaMask中的用户账户
 ---------------
   MetaMask 允许用户在扩展中管理多个账户
   我们可以通过这样来获取 web3 变量中激活的当前账户：
   
-  var userAccount = web3.eth.accounts[0]
+    var userAccount = web3.eth.accounts[0]
   
   因为用户可以随时在 MetaMask 中切换账户，我们的应用需要监控这个变量
   我们可以通过 setInterval 方法来做:
